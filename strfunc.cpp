@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "Strf.h"
+
+#include "header\Strf.h"
 
 int str_puts (const char *str){
     if (!str)
@@ -101,7 +102,7 @@ char *str_strdup (const char *str_src){
     if (!str_src)
         return NULL;
 
-    char *str_dst = (char*)malloc (sizeof (char));
+    char *str_dst = (char*) calloc (str_strlen (str_src)+1, sizeof (char));
 
     str_strcpy (str_dst, str_src);
 
@@ -111,6 +112,9 @@ char *str_strdup (const char *str_src){
 char *str_getline (FILE *fpin, char *str, char delim){
     if (!str || !fpin || !delim)
         return NULL;
+
+    while (*str != '\0')
+        str++;
 
     char ch = 0;
     while ((ch = fgetc (fpin)) != EOF){
@@ -123,5 +127,3 @@ char *str_getline (FILE *fpin, char *str, char delim){
 
     *str = '\0';
 }
-
-

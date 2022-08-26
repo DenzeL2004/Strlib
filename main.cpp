@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
-#include "Strf.h"
+
+#include "header\Strf.h"
 
 int main(){
     str_puts ("Hello world!\n");
@@ -45,6 +46,9 @@ int main(){
     str_getline (stdin, str, '\n');
 
     printf ("%s", str);
+
+    str_getline (stdin, str, '\n');
+    printf ("%s\n", str);
 
     return 0;
 }
