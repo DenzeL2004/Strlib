@@ -40,6 +40,10 @@ int main(){
     char *str;
     str = str_strdup ("ABRAcodavra");
 
+    printf ("%s\n", str);
+
+    str_getline (stdin, str, '\n');
+
     printf ("%s", str);
 
     return 0;

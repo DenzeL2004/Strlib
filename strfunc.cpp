@@ -101,11 +101,27 @@ char *str_strdup (const char *str_src){
     if (!str_src)
         return NULL;
 
-    char *str_dst = (char *)malloc(sizeof(char));
+    char *str_dst = (char*)malloc (sizeof (char));
 
     str_strcpy (str_dst, str_src);
 
     return str_dst;
+}
+
+char *str_getline (FILE *fpin, char *str, char delim){
+    if (!str || !fpin || !delim)
+        return NULL;
+
+    char ch = 0;
+    while ((ch = fgetc (fpin)) != EOF){
+        if (ch == delim)
+            break;
+
+        *str = ch;
+        str++;
+    }
+
+    *str = '\0';
 }
 
 
